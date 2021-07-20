@@ -39,14 +39,14 @@ html {
     /* Box-model */
     height: 60px;
     padding-top: 20px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   
     /* Positioning */
     margin-left: 70px;
     font-family: Georgia, Times, "Times New Roman", serif;
   
     /* Typography */
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     color: #fff;
   

@@ -85,19 +85,19 @@ def position_drop_down():
 
 # Create a route that returns a JSON list of stations from the database
 @app.route("/api/v1.0/ADP_Data")
-def ADP_Data(): 
+def All_data(): 
 
     session = Session(engine)
 
     """Return a list of stations from the database""" 
-    adp_query_results = session.query(ADP_Data.PlayerID,ADP_Data.Position).all()
+    adp_query_results = session.query(ADP.Name,ADP.Position).all()
 
     session.close()  
     
     ADP_Data_values = []
-    for playerid, position in adp_query_results:
+    for name, position in adp_query_results:
         adp_values_dict = {}
-        adp_values_dict['playerid'] = playerid
+        adp_values_dict['Name'] = name
         adp_values_dict['Position'] = position
         ADP_Data_values.append(adp_values_dict)
     return jsonify (ADP_Data_values) 

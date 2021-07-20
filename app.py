@@ -48,173 +48,193 @@ def welcome():
 
         f"/api/v1.0/position<br/>"
         f"/api/v1.0/ADP_Data<br/>"
-        f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/start<br/>"
-        f"/api/v1.0/start/end<br/>"
-        f"Note: to access values between a start and end date enter both dates using format: YYYY-mm-dd/YYYY-mm-dd"
+        f"/api/v1.0/DEF<br/>"
+        f"/api/v1.0/K<br/>"
+        f"/api/v1.0/QB<br/>"
+        f"/api/v1.0/RB<br/>"
+        f"/api/v1.0/WR<br/>"
+        f"/api/v1.0/TE<br/>"
     )
 
-# Create a route that queries precipiation levels and dates and returns a dictionary using date as key and precipation as value
+#Create all distinct routes to return JSONIFIED Data for each position full stats and dropdown data
+
 @app.route("/api/v1.0/position")
-def position_drop_down():
+def position_drop_down_data():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
     """Return a list of precipitation (prcp)and date (date) data"""
     
     # Create new variable to store results from query to Measurement table for prcp and date columns
-    # position_query_results = session.query(Position_Dropdown.Position).all()
+    position_query_results = session.query(Position_Dropdown.Position).all()
 
-    # # Close session
-    # session.close()
+    # Close session
+    session.close()
 
-    # # Create a dictionary from the row data and append to a list of all_passengers
-    #     # 1. Create an empty list of precipitation query values 
-    #     # 2. Create for loop to iterate through query results (precipitation_query_results) 
-    #     # 3. Create dictionary with key "precipitation" set to prcp from precipitation_query_results and key "date" to date from precipitation_query_results
-    #     # 4. Append values from precipitation_dict to your original empty list precipitation_query_values 
-    #     # 5. Return JSON format of your new list that now contains the dictionary of prcp and date values to your browser
+    # # Create a dictionary from the row data and append to a list of position_query_values
+    # Below steps explain how all loops in all Flask Routes for JSON data will work
+    #     # 1. Create an empty list of position query values 
+    #     # 2. Create for loop to iterate through query results (position_query_results) 
+    #     # 4. Append values from precipitation_dict to your original empty list position_query_values 
+    #     # 5. Return JSON format of your new list that now contains the dictionary of position values to your browser
     
-    # position_query_values = []
-    # for Position in position_query_results:
-    #     position_dict = {}
-    #     position_dict["Position"] = Position
-    #     position_query_values.append(position_dict)
+    position_query_values = []
+    for Position in position_query_results:
+        position_dict = {}
+        position_dict["Position"] = Position
+        position_query_values.append(position_dict)
 
-    # return jsonify(position_query_values) 
+    return jsonify(position_query_values) 
 
-# Create a route that returns a JSON list of stations from the database
-@app.route("/api/v1.0/ADP_Data")
-def ADP_Data(): 
+# Create a route that returns a JSON list of DEF Player Stats from the database
+@app.route("/api/v1.0/DEF")
+def DEF_Data(): 
 
     session = Session(engine)
 
-    """Return a list of stations from the database""" 
-    adp_query_results = session.query(ADP_Data.PlayerID,ADP_Data.Position).all()
+    """Return a list of all columns from the DEF table in the database""" 
+    def_query_results = session.query(DEF.Name, DEF.Team, DEF.Position, DEF.AverageDraftPosition, DEF.AverageDraftPositionPPR,DEF.ByeWeek, DEF.LastSeasonFantasyPoints,DEF.ProjectedFantasyPoints).all()
 
     session.close()  
     
-    ADP_Data_values = []
-    for playerid, position in adp_query_results:
-        adp_values_dict = {}
-        adp_values_dict['playerid'] = playerid
-        adp_values_dict['Position'] = position
-        ADP_Data_values.append(adp_values_dict)
-    return jsonify (ADP_Data_values) 
+    DEF_Data_values = []
+    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+        def_values_dict = {}
+        def_values_dict['Name'] = name
+        def_values_dict['Team'] = team
+        def_values_dict['Position'] = position
+        def_values_dict['AverageDraftPosition'] = averagedraftposition
+        def_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        def_values_dict['ByeWeek'] = byeweek
+        def_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        def_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        DEF_Data_values.append(def_values_dict)
+    return jsonify (DEF_Data_values)  
 
-# # Create a route that queries the dates and temp observed for the most active station for the last year of data and returns a JSON list of the temps observed for the last year
-# @app.route("/api/v1.0/tobs") 
-# def tobs():
-#     session = Session(engine)
+@app.route("/api/v1.0/K")
+def K_Data(): 
+
+    session = Session(engine)
+
+    """Return a list of all columns from the K table from the database""" 
+    def_query_results = session.query(K.Name, K.Team, K.Position, K.AverageDraftPosition, K.AverageDraftPositionPPR,K.ByeWeek, K.LastSeasonFantasyPoints,K.ProjectedFantasyPoints).all()
+
+    session.close()  
     
-#     """Return a list of dates and temps observed for the most active station for the last year of data from the database""" 
-#     # Create query to find the last date in the database
+    K_Data_values = []
+    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+        K_values_dict = {}
+        K_values_dict['Name'] = name
+        K_values_dict['Team'] = team
+        K_values_dict['Position'] = position
+        K_values_dict['AverageDraftPosition'] = averagedraftposition
+        K_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        K_values_dict['ByeWeek'] = byeweek
+        K_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        K_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        K_Data_values.append(K_values_dict)
+    return jsonify (K_Data_values)  
+
+@app.route("/api/v1.0/QB")
+def QB_Data(): 
+
+    session = Session(engine)
+
+    """Return a list of all columns from the QB table from the database""" 
+    def_query_results = session.query(QB.Name, QB.Team, QB.Position, QB.AverageDraftPosition, QB.AverageDraftPositionPPR,QB.ByeWeek, QB.LastSeasonFantasyPoints,QB.ProjectedFantasyPoints).all()
+
+    session.close()  
     
-#     last_year_query_results = session.query(Measurement.date).\
-#         order_by(Measurement.date.desc()).first() 
+    QB_Data_values = []
+    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+        QB_values_dict = {}
+        QB_values_dict['Name'] = name
+        QB_values_dict['Team'] = team
+        QB_values_dict['Position'] = position
+        QB_values_dict['AverageDraftPosition'] = averagedraftposition
+        QB_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        QB_values_dict['ByeWeek'] = byeweek
+        QB_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        QB_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        QB_Data_values.append(QB_values_dict)
+    return jsonify (QB_Data_values)  
 
-#     print(last_year_query_results)
-#     # last_year_date returns row ('2017-08-23',), use this to create a date time object to find start query date 
+@app.route("/api/v1.0/RB")
+def RB_Data(): 
+
+    session = Session(engine)
+
+    """Return a list of all columns from the RB table from the database""" 
+    def_query_results = session.query(RB.Name, RB.Team, RB.Position, RB.AverageDraftPosition, RB.AverageDraftPositionPPR,RB.ByeWeek, RB.LastSeasonFantasyPoints,RB.ProjectedFantasyPoints).all()
+
+    session.close()  
     
-#     # check to see if last year was correctly returned by creating dictionary to return last year value to browser in JSON format
-#     last_year_query_values = []
-#     for date in last_year_query_results:
-#         last_year_dict = {}
-#         last_year_dict["date"] = date
-#         last_year_query_values.append(last_year_dict) 
-#     print(last_year_query_values)
-#     # returns: [{'date': '2017-08-23'}]
+    RB_Data_values = []
+    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+        RB_values_dict = {}
+        RB_values_dict['Name'] = name
+        RB_values_dict['Team'] = team
+        RB_values_dict['Position'] = position
+        RB_values_dict['AverageDraftPosition'] = averagedraftposition
+        RB_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        RB_values_dict['ByeWeek'] = byeweek
+        RB_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        RB_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        RB_Data_values.append(RB_values_dict)
+    return jsonify (RB_Data_values)  
 
-#     # Create query_start_date by finding the difference between date time object of "2017-08-23" - 365 days
-#     query_start_date = dt.date(2017, 8, 23)-dt.timedelta(days =365) 
-#     print(query_start_date) 
-#     # returns: 2016-08-23 
+@app.route("/api/v1.0/WR")
+def WR_Data(): 
 
-#     # Create query to find most active station in the database 
+    session = Session(engine)
 
-#     active_station= session.query(Measurement.station, func.count(Measurement.station)).\
-#         order_by(func.count(Measurement.station).desc()).\
-#         group_by(Measurement.station).first()
-#     most_active_station = active_station[0] 
+    """Return a list of all columns from the WR table from the database""" 
 
-#     session.close() 
-#      # active_station returns: ('USC00519281', 2772), index to get the first position to isolate most active station number
-#     print(most_active_station)
-#     # returns: USC00519281  
+   
+    def_query_results = session.query(WR.Name, WR.Team, WR.Position, WR.AverageDraftPosition, WR.AverageDraftPositionPPR,WR.ByeWeek, WR.LastSeasonFantasyPoints,WR.ProjectedFantasyPoints).all()
 
-#     # Create a query to find dates and tobs for the most active station (USC00519281) within the last year (> 2016-08-23)
-
-#     dates_tobs_last_year_query_results = session.query(Measurement.date, Measurement.tobs, Measurement.station).\
-#         filter(Measurement.date > query_start_date).\
-#         filter(Measurement.station == most_active_station) 
+    session.close()  
     
+    WR_Data_values = []
+    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+        WR_values_dict = {}
+        WR_values_dict['Name'] = name
+        WR_values_dict['Team'] = team
+        WR_values_dict['Position'] = position
+        WR_values_dict['AverageDraftPosition'] = averagedraftposition
+        WR_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        WR_values_dict['ByeWeek'] = byeweek
+        WR_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        WR_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        WR_Data_values.append(WR_values_dict)
+    return jsonify (WR_Data_values)  
 
-#     # Create a list of dates,tobs,and stations that will be appended with dictionary values for date, tobs, and station number queried above
-#     dates_tobs_last_year_query_values = []
-#     for date, tobs, station in dates_tobs_last_year_query_results:
-#         dates_tobs_dict = {}
-#         dates_tobs_dict["date"] = date
-#         dates_tobs_dict["tobs"] = tobs
-#         dates_tobs_dict["station"] = station
-#         dates_tobs_last_year_query_values.append(dates_tobs_dict)
-        
-#     return jsonify(dates_tobs_last_year_query_values) 
+@app.route("/api/v1.0/TE")
+def TE_Data(): 
 
-# # Create a route that when given the start date only, returns the minimum, average, and maximum temperature observed for all dates greater than or equal to the start date entered by a user
+    session = Session(engine)
 
-# @app.route("/api/v1.0/<start>/<end>")
-# # Define function, set "start" date entered by user as parameter for start_date decorator 
-# def start_date(start):
-#     session = Session(engine) 
+    """Return a list of all columns from the TE table from the database""" 
 
-#     """Return a JSON list of the minimum temperature, the average temperature, and the max temperature for a given start date."""
+    def_query_results = session.query(TE.Name, TE.Team, TE.Position, TE.AverageDraftPosition, TE.AverageDraftPositionPPR,TE.ByeWeek, TE.LastSeasonFantasyPoints,TE.ProjectedFantasyPoints).all()
 
-#     # Create query for minimum, average, and max tobs where query date is greater than or equal to the date the user submits in URL
-#     start_date_tobs_results = session.query(func.min(Measurement.tobs),func.avg(Measurement.tobs),func.max(Measurement.tobs)).\
-#         filter(Measurement.date >= start).all()
+    session.close()  
     
-#     session.close() 
+    TE_Data_values = []
+    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+        TE_values_dict = {}
+        TE_values_dict['Name'] = name
+        TE_values_dict['Team'] = team
+        TE_values_dict['Position'] = position
+        TE_values_dict['AverageDraftPosition'] = averagedraftposition
+        TE_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        TE_values_dict['ByeWeek'] = byeweek
+        TE_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        TE_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        TE_Data_values.append(TE_values_dict)
+    return jsonify (TE_Data_values) 
 
-#     # Create a list of min,max,and average temps that will be appended with dictionary values for min, max, and avg tobs queried above
-#     start_date_tobs_values =[]
-#     for min, avg, max in start_date_tobs_results:
-#         start_date_tobs_dict = {}
-#         start_date_tobs_dict["min"] = min
-#         start_date_tobs_dict["average"] = avg
-#         start_date_tobs_dict["max"] = max
-#         start_date_tobs_values.append(start_date_tobs_dict)
-    
-#     return jsonify(start_date_tobs_values)
 
-# # Create a route that when given the start date only, returns the minimum, average, and maximum temperature observed for all dates greater than or equal to the start date entered by a user
-
-# @app.route("/api/v1.0/<start>/<end>")
-
-# # Define function, set start and end dates entered by user as parameters for start_end_date decorator
-# def Start_end_date(start, end):
-#     session = Session(engine)
-
-#     """Return a list of min, avg and max tobs between start and end dates entered"""
-    
-#     # Create query for minimum, average, and max tobs where query date is greater than or equal to the start date and less than or equal to end date user submits in URL
-
-#     start_end_date_tobs_results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
-#         filter(Measurement.date >= start).\
-#         filter(Measurement.date <= end).all()
-
-#     session.close()
-  
-#     # Create a list of min,max,and average temps that will be appended with dictionary values for min, max, and avg tobs queried above
-#     start_end_tobs_date_values = []
-#     for min, avg, max in start_end_date_tobs_results:
-#         start_end_tobs_date_dict = {}
-#         start_end_tobs_date_dict["min_temp"] = min
-#         start_end_tobs_date_dict["avg_temp"] = avg
-#         start_end_tobs_date_dict["max_temp"] = max
-#         start_end_tobs_date_values.append(start_end_tobs_date_dict) 
-    
-
-#     return jsonify(start_end_tobs_date_values)
    
 if __name__ == '__main__':
     app.run(debug=True) 

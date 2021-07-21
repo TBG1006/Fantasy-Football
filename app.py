@@ -58,6 +58,43 @@ def welcome():
 
 #Create all distinct routes to return JSONIFIED Data for each position full stats and dropdown data
 
+@app.route("/api/v1.0/ADP_Data")
+def adp_data():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of precipitation (prcp)and date (date) data"""
+    
+    # Create new variable to store results from query to Measurement table for prcp and date columns
+    adp_query_results = session.query(ADP.FantasyPlayerKey, ADP.PlayerID, ADP.Name,ADP.Team, ADP.Position,ADP.AverageDraftPosition,ADP.AverageDraftPositionPPR, ADP.ByeWeek,ADP.LastSeasonFantasyPoints,ADP.ProjectedFantasyPoints).all()
+
+    # Close session
+    session.close()
+
+    # # Create a dictionary from the row data and append to a list of position_query_values
+    # Below steps explain how all loops in all Flask Routes for JSON data will work
+    #     # 1. Create an empty list of position query values 
+    #     # 2. Create for loop to iterate through query results (position_query_results) 
+    #     # 4. Append values from precipitation_dict to your original empty list position_query_values 
+    #     # 5. Return JSON format of your new list that now contains the dictionary of position values to your browser
+    
+    adp_query_values = []
+    for fantasyplayerkey, playerid, name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in adp_query_results:
+        adp_values_dict = {}
+        adp_values_dict['FantasyPlayerKey'] = fantasyplayerkey
+        adp_values_dict['PlayerID'] = playerid
+        adp_values_dict['Name'] = name
+        adp_values_dict['Team'] = team
+        adp_values_dict['Position'] = position
+        adp_values_dict['AverageDraftPosition'] = averagedraftposition
+        adp_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+        adp_values_dict['ByeWeek'] = byeweek
+        adp_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+        adp_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        adp_query_values.append(adp_values_dict) 
+    return jsonify(adp_query_values) 
+
+
 @app.route("/api/v1.0/position")
 def position_drop_down_data():
     # Create our session (link) from Python to the DB

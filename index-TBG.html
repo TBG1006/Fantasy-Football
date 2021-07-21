@@ -9,7 +9,7 @@
     <title>Fantasy Football Team Draft</title>
 
     <!-- Boostrap Stylesheet -->
-    <!-- <link rel="stylesheet" href="CSS/bootstrap.min.css" media="screen"> -->
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" media="screen">
 
     <!-- Our own CSS stylesheet -->
     <link rel="stylesheet" href="CSS/style.css" media="screen">
@@ -54,20 +54,11 @@
           <div class="col-md-3">
             <div class="well">
                 <h5 class="imageNav-header">Position:</h5>
-                <select id="positionDropDown">
-                  <option value= "ALL_PLAYERS">ALL_PLAYERS</option>
-                  <option value= "QB">QB</option>
-                  <option value= "RB">RB</option>
-                  <option value= "WR">WR</option>
-                  <option value= "TE">TE</option>
-                  <option value= "DEF">DEF</option>
-                  <option value= "K">K</option>
-
-                </select>
+                <select id="positionDropDown" onchange="optionChanged(this.value)"></select>
               </div>
           </div>
           <div class="col-md-9">
-            <!-- Start of Stats Charts -->s
+            <!-- Start of Stats Charts -->
             <section id="imageNav-area">
               <div class="imageNav-content">
                 <h2 class="imageNav-header">Player Stats</h2>

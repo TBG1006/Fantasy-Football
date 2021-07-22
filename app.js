@@ -1,9 +1,9 @@
 
 d3.selectAll("#positionDropDown").on("change", statChart);
 
-function statchart(adpData) {
+function statChart() {
     // Use D3 to select the dropdown menu
-    var dropdownMenu = d3.select("#positionDropDown");
+    var dropdownMenu = d3.select("#positionDropDown").on("change", statChart);
     // Assign the value of the dropdown menu option to a variable
     var dataset = dropdownMenu.property("value");
   
@@ -45,8 +45,8 @@ function init(){
     adpGraph();
 }
 
-function optionChange(newAdpData){
-    function statchart(newAdpData);
+function optionChange() {
+    function statChart();
     // function adpGraph(newAdpData);
 }
 

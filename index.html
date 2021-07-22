@@ -54,7 +54,7 @@
           <div class="col-md-3">
             <div class="well">
                 <h5 class="imageNav-header">Position:</h5>
-                <select id="positionDropDown">
+                <select id="positionDropDown" onchange="statChart(this.value)">
                   <option value= "ALL_PLAYERS">ALL_PLAYERS</option>
                   <option value= "QB">QB</option>
                   <option value= "RB">RB</option>
@@ -124,6 +124,11 @@
 
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="app.js"></script>
+    
   </section>
 
 </html>

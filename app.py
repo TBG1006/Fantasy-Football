@@ -95,6 +95,7 @@ def position_drop_down_data():
     # Create new variable to store results from query to Measurement table for prcp and date columns
     position_query_results = session.query(Position_Dropdown.Position).all()
 
+    print(position_query_results)
     # Close session
     session.close()
 
@@ -107,8 +108,9 @@ def position_drop_down_data():
     
     position_query_values = []
     for Position in position_query_results:
+        print(Position)
         position_dict = {}
-        position_dict["Position"] = Position
+        position_dict["Position"] = Position[0]
         position_query_values.append(position_dict)
 
     return jsonify(position_query_values) 

@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import request
 
-from flask import Flask, jsonify 
+from flask import Flask, jsonify, render_template 
 
 # Create connection to Hawaii.sqlite file
 #################################################
@@ -43,18 +43,8 @@ app = Flask(__name__)
 # Create root route
 @app.route("/")
 def welcome():
-    """List all available api routes."""
-    return (
+    return render_template("index.html")
 
-        f"/api/v1.0/position<br/>"
-        f"/api/v1.0/ADP_Data<br/>"
-        f"/api/v1.0/DEF<br/>"
-        f"/api/v1.0/K<br/>"
-        f"/api/v1.0/QB<br/>"
-        f"/api/v1.0/RB<br/>"
-        f"/api/v1.0/WR<br/>"
-        f"/api/v1.0/TE<br/>"
-    )
 
 #Create all distinct routes to return JSONIFIED Data for each position full stats and dropdown data
 

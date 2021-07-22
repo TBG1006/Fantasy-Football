@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import request
 
-from flask import Flask, jsonify 
+from flask import Flask, jsonify, render_template 
 
 # Create connection to Hawaii.sqlite file
 #################################################
@@ -43,18 +43,8 @@ app = Flask(__name__)
 # Create root route
 @app.route("/")
 def welcome():
-    """List all available api routes."""
-    return (
+    return render_template("index.html")
 
-        f"/api/v1.0/position<br/>"
-        f"/api/v1.0/ADP_Data<br/>"
-        f"/api/v1.0/DEF<br/>"
-        f"/api/v1.0/K<br/>"
-        f"/api/v1.0/QB<br/>"
-        f"/api/v1.0/RB<br/>"
-        f"/api/v1.0/WR<br/>"
-        f"/api/v1.0/TE<br/>"
-    )
 
 #Create all distinct routes to return JSONIFIED Data for each position full stats and dropdown data
 
@@ -105,6 +95,7 @@ def position_drop_down_data():
     # Create new variable to store results from query to Measurement table for prcp and date columns
     position_query_results = session.query(Position_Dropdown.Position).all()
 
+    print(position_query_results)
     # Close session
     session.close()
 
@@ -117,8 +108,9 @@ def position_drop_down_data():
     
     position_query_values = []
     for Position in position_query_results:
+        print(Position)
         position_dict = {}
-        position_dict["Position"] = Position
+        position_dict["Position"] = Position[0]
         position_query_values.append(position_dict)
 
     return jsonify(position_query_values) 

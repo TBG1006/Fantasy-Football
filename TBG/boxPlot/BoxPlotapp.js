@@ -198,7 +198,7 @@ function makeResponsive() {
       .style("width", 80);
 
     // Add individual points with jitter
-    var jitterWidth = 50;
+    var jitterWidth = 100;
     var circlesGroup = chartGroup.selectAll("circle");
     // svg
     chartGroup
@@ -213,29 +213,28 @@ function makeResponsive() {
       .attr("cy", function (d) {
         return y(d.PROJECTED_POINTS);
       })
-      .attr("r", 5)
+      .attr("r", 7)
       .style("fill", "white")
       .attr("stroke", "black");
 
     // Initialize Tooltip
-    var toolTip = d3
-      .tip()
-      .attr("class", "d3-tip")
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
       .offset([40, -20])
-      .html(function (d) {
-        return `${d.NAME}<br>Name: ${d.PROJECTED_POINTS}<br>Projected Points: ${d.num_hits}`;
+      .html(function(d) {
+        return (`${d.NAME}`);
       });
-
+      // console.log(`${d.NAME}`);
     // Create tooltip in the chart
     svg.call(toolTip);
 
     //  Create event listeners to display and hide the tooltip
     circlesGroup
-      .on("click", function (data) {
+      .on("mouseover", function(data) {
         toolTip.show(data, this);
       })
       // onmouseout event
-      .on("mouseout", function (data, index) {
+      .on("mouseout", function (data) {
         toolTip.hide(data);
       });
 

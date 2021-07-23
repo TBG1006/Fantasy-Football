@@ -27,7 +27,7 @@ Base.prepare(engine, reflect=True)
 # # Save references to the measurement and station tables in the database
 print(Base.classes.keys())
 ADP = Base.classes.ADP_Data
-DEF = Base.classes.DEF_Data
+# DEF = Base.classes.DEF_Data
 K = Base.classes.K_Data
 Position_Dropdown = Base.classes.Position_dropdown
 QB = Base.classes.QB_Data
@@ -42,6 +42,7 @@ app = Flask(__name__)
 
 # Create root route
 @app.route("/")
+@app.route("/about.html")
 def welcome():
     return render_template("index.html")
 
@@ -116,29 +117,29 @@ def position_drop_down_data():
     return jsonify(position_query_values) 
 
 # Create a route that returns a JSON list of DEF Player Stats from the database
-@app.route("/api/v1.0/DEF")
-def DEF_Data(): 
+# @app.route("/api/v1.0/DEF")
+# def DEF_Data(): 
 
-    session = Session(engine)
+#     session = Session(engine)
 
-    """Return a list of all columns from the DEF table in the database""" 
-    def_query_results = session.query(DEF.Name, DEF.Team, DEF.Position, DEF.AverageDraftPosition, DEF.AverageDraftPositionPPR,DEF.ByeWeek, DEF.LastSeasonFantasyPoints,DEF.ProjectedFantasyPoints).all()
+#     """Return a list of all columns from the DEF table in the database""" 
+#     def_query_results = session.query(DEF.Name, DEF.Team, DEF.Position, DEF.AverageDraftPosition, DEF.AverageDraftPositionPPR,DEF.ByeWeek, DEF.LastSeasonFantasyPoints,DEF.ProjectedFantasyPoints).all()
 
-    session.close()  
+#     session.close()  
     
-    DEF_Data_values = []
-    for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
-        def_values_dict = {}
-        def_values_dict['Name'] = name
-        def_values_dict['Team'] = team
-        def_values_dict['Position'] = position
-        def_values_dict['AverageDraftPosition'] = averagedraftposition
-        def_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
-        def_values_dict['ByeWeek'] = byeweek
-        def_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
-        def_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
-        DEF_Data_values.append(def_values_dict)
-    return jsonify (DEF_Data_values)  
+#     DEF_Data_values = []
+#     for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:
+#         def_values_dict = {}
+#         def_values_dict['Name'] = name
+#         def_values_dict['Team'] = team
+#         def_values_dict['Position'] = position
+#         def_values_dict['AverageDraftPosition'] = averagedraftposition
+#         def_values_dict['AverageDraftPositionPPR'] =averagedraftpositionppr
+#         def_values_dict['ByeWeek'] = byeweek
+#         def_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
+#         def_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+#         DEF_Data_values.append(def_values_dict)
+#     return jsonify (DEF_Data_values)  
 
 @app.route("/api/v1.0/K")
 def K_Data(): 

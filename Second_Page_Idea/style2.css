@@ -24,7 +24,8 @@
     transition: all 1s ease-in-out;
 }
 .h2, h2 {
-    font-size: 35px;
+    text-align: center;
+    font-size: 40px;
 }
 h1, h2, h3, h4, h5, .ds-title {
     font-family: "DCPResidencesThai-Light";
@@ -45,8 +46,9 @@ h2 {
 body {
     background-color: #4e4a49;
     font-family: "DCPText";
-    font-size: 13px;
+    font-size: 20px;
     color: #b2ab97;
+    text-align: center;
 }
 /* body {
     margin: 0;

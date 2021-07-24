@@ -148,9 +148,9 @@ def projected_data():
     projected_query_values = []
     for name, position,projectedfantasypoints in projected_query_results:
         adp_values_dict = {}
-        adp_values_dict['Name'] = name
-        adp_values_dict['Position'] = position
-        adp_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        adp_values_dict['NAME'] = name
+        adp_values_dict['POSITION'] = position
+        adp_values_dict['PROJECTED_POINTS'] = projectedfantasypoints
         projected_query_values.append(adp_values_dict) 
     return jsonify(projected_query_values)
 

@@ -430,7 +430,7 @@ function initTable(highlights) {
     // First, clear out any existing data
     d3.json("/api/v1.0/Highlights").then(highlights => {
         var statTable = d3.select('tbody');
-        buildTable(highlights);
+        // buildTable(highlights);
         bubbleChart(highlights);
         makeResponsive(highlights);
     })

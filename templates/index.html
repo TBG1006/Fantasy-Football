@@ -111,7 +111,7 @@
                         <th class="table-head">Projected Fantasy Pts</th>
                       </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody><tr><td>Pittsburgh Steelers</td><td>PIT</td><td>DEF</td><td>119</td><td>122.8</td><td>7</td><td>169.2</td><td>129.7</td></tr><tr><td>Younghoe Koo</td><td>ATL</td><td>K</td><td>157.4</td><td>160.5</td><td>6</td><td>180.5</td><td>149.1</td></tr><tr><td>Patrick Mahomes</td><td>KC</td><td>QB</td><td>16.2</td><td>23.9</td><td>12</td><td>422.3</td><td>449.3</td></tr><tr><td>Christian McCaffrey</td><td>CAR</td><td>RB</td><td>1.7000000000000002</td><td>1.7000000000000002</td><td>13</td><td>82.8</td><td>309.9</td></tr><tr><td>Travis Kelce</td><td>KC</td><td>TE</td><td>11.2</td><td>10.8</td><td>12</td><td>234.4</td><td>216.5</td></tr><tr><td>Tyreek Hill</td><td>KC</td><td>WR</td><td>10.2</td><td>10.8</td><td>12</td><td>272.9</td><td>241.5</td></tr></tbody>
                   </table>
               </div>
             </section>
@@ -158,10 +158,16 @@
       </p>
     </footer>
     <!-- End of footer -->
-
+    <!-- Using JS Library DataTables to Dynamically Filter table results -->
     <!-- jQuery CDN -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+     $(document).ready( function () {
+    $('#stat-table').DataTable();
+} );
+    </script>
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>

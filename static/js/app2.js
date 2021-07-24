@@ -272,10 +272,12 @@ function bubbleChart (data) {
 
     var ADP = [];
     var Position =[];
+    var Player =[];
 
     for (var i = 0; i < data.length; i++){
         ADP.push(data[i].AverageDraftPosition);
         Position.push(data[i].Position);
+        Player.push(data[i].Name);
     }
 
     var bubblelayout = {
@@ -290,7 +292,7 @@ function bubbleChart (data) {
         {
             x: Position,
             y: ADP,
-            // text: "<h2>" + Name[i] + "</h2> <hr> <h3>ADP: " + ADP[i] + "</h3><h3>Projected Fantasy Points: " + PFP[i] + "</h3><h3>Position: " + Position[i] + "</h3>",
+            text: Player,
             mode: "markers",
             marker: {
                 opacity: 0.3,

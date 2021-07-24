@@ -35,6 +35,7 @@ RB = Base.classes.RB_Data
 TE = Base.classes.TE_Data
 WR = Base.classes.WR_Data
 Highlights = Base.classes.Highlights_Data
+BoxPlot = Base.classes.BoxPlot
 # Initialize Flask
 #################################################
 app = Flask(__name__)
@@ -133,7 +134,7 @@ def projected_data():
     """Return a list of precipitation (prcp)and date (date) data"""
     
     # Create new variable to store results from query to Measurement table for prcp and date columns
-    projected_query_results = session.query(ADP.Name,ADP.Position,ADP.ProjectedFantasyPoints).all()
+    projected_query_results = session.query(BoxPlot.NAME,BoxPlot.POSITION,BoxPlot.PROJECTED_POINTS).all()
 
     # Close session
     session.close()

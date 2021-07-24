@@ -114,7 +114,7 @@ function makeResponsive() {
     // Show the Y scale
     var y = d3
       .scaleLinear()
-      .domain([50, d3.max(data, (d) => d.PROJECTED_POINTS * 1.1)])
+      .domain([d3.min(data, (d) => d.PROJECTED_POINTS * 1.1), d3.max(data, (d) => d.PROJECTED_POINTS * 1.1)])
       .range([height, 0]);
 
     // var xAxis = d3.axisBottom(x);

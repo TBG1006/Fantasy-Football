@@ -14,7 +14,7 @@
     var margin = {
       top: 20,
       right: 40,
-      bottom: 20,
+      bottom: 50,
       left: 40,
     };
   
@@ -114,15 +114,15 @@
       // Show the Y scale
       var y = d3
         .scaleLinear()
-        .domain([50, d3.max(data, (d) => d.PROJECTED_POINTS * 1.1)])
+        .domain([d3.min(data, (d) => d.PROJECTED_POINTS * .5), d3.max(data, (d) => d.PROJECTED_POINTS * 1.1)])
         .range([height, 0]);
   
       // var xAxis = d3.axisBottom(x);
       var yAxis = d3.axisLeft(y).ticks(6);
   
-      // chartGroup.append("g")
-      //     .attr("transform", `translate(0, ${height})`)
-      //     .call(xAxis);
+      chartGroup.append("g")
+          .attr("transform", `translate(0, ${height})`)
+          .call(x);
   
       chartGroup.append("g").call(yAxis);
   
@@ -217,32 +217,32 @@
         .style("fill", "white")
         .attr("stroke", "black");
   
-      // Initialize Tooltip
-    //   var toolTip = d3.tip()
-    //     .attr("class", "tooltip")
-    //     .offset([40, -20])
-    //     .html(function(d) {
-    //       return (`${d.NAME}`);
-    //     });
-        // console.log(`${d.NAME}`);
-      // Create tooltip in the chart
-    //   svg.call(toolTip);
+      // // Initialize Tooltip
+      // var toolTip = d3.tip()
+      //   .attr("class", "tooltip")
+      //   .offset([40, -20])
+      //   .html(function(d) {
+      //     console.log(`${d.NAME}`);
+      //     return (`${d.NAME}`);
+      //   });
+      // // Create tooltip in the chart
+      // svg.call(toolTip);
   
-      //  Create event listeners to display and hide the tooltip
-    //   circlesGroup
-    //     .on("mouseover", function(data) {
-    //       toolTip.show(data, this);
-    //     })
-    //     // onmouseout event
-    //     .on("mouseout", function (data) {
-    //       toolTip.hide(data);
-    //     });
+      // //  Create event listeners to display and hide the tooltip
+      // circlesGroup
+      //   .on("mouseover", function(data) {
+      //     toolTip.show(data, this);
+      //   })
+      //   // onmouseout event
+      //   .on("mouseout", function (data) {
+      //     toolTip.hide(data);
+      //   });
   
       // Create axes labels
       chartGroup
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left + 0)
+        .attr("y", 0 - margin.left - 2)
         .attr("x", 0 - height / 1.5)
         .attr("dy", "1em")
         .attr("class", "axisText")
@@ -250,7 +250,7 @@
   
       chartGroup
         .append("text")
-        .attr("transform", `translate(${width / 2}, ${height + margin.top - 10})`)
+        .attr("transform", `translate(${width / 2}, ${height + margin.top + 8})`)
         .attr("class", "axisText")
         .text("POSITION");
     });

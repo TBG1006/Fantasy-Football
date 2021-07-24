@@ -38,7 +38,7 @@ function makeResponsive() {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   // Read CSV convert points to number values
-  d3.csv("BoxPlotData.csv").then(function (data) {
+  d3.json("/api/v1.0/Projected_Data").then(function (data) {
     data.forEach(function (d) {
       d.PROJECTED_POINTS = +d.PROJECTED_POINTS;
     });
@@ -213,7 +213,7 @@ function makeResponsive() {
       .attr("cy", function (d) {
         return y(d.PROJECTED_POINTS);
       })
-      .attr("r", 7)
+      .attr("r", 5)
       .style("fill", "white")
       .attr("stroke", "black");
 

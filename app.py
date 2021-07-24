@@ -123,7 +123,37 @@ def adp_data():
         adp_values_dict['LastSeasonFantasyPoints'] = lastseasonfantasypoints
         adp_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
         adp_query_values.append(adp_values_dict) 
-    return jsonify(adp_query_values) 
+    return jsonify(adp_query_values)  
+
+@app.route("/api/v1.0/Projected_Data")
+def projected_data():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of precipitation (prcp)and date (date) data"""
+    
+    # Create new variable to store results from query to Measurement table for prcp and date columns
+    projected_query_results = session.query(ADP.Name,ADP.Position,ADP.ProjectedFantasyPoints).all()
+
+    # Close session
+    session.close()
+
+    # # Create a dictionary from the row data and append to a list of position_query_values
+    # Below steps explain how all loops in all Flask Routes for JSON data will work
+    #     # 1. Create an empty list of position query values 
+    #     # 2. Create for loop to iterate through query results (position_query_results) 
+    #     # 4. Append values from precipitation_dict to your original empty list position_query_values 
+    #     # 5. Return JSON format of your new list that now contains the dictionary of position values to your browser
+    
+    projected_query_values = []
+    for name, position,projectedfantasypoints in projected_query_results:
+        adp_values_dict = {}
+        adp_values_dict['Name'] = name
+        adp_values_dict['Position'] = position
+        adp_values_dict['ProjectedFantasyPoints'] = projectedfantasypoints
+        projected_query_values.append(adp_values_dict) 
+    return jsonify(projected_query_values)
+
 
 
 @app.route("/api/v1.0/position")
@@ -157,15 +187,15 @@ def position_drop_down_data():
     return jsonify(position_query_values) 
 
 # Create a route that returns a JSON list of DEF Player Stats from the database
-@app.route("/api/v1.0/DEF")
+# @app.route("/api/v1.0/DEF")
 def DEF_Data(): 
 
     session = Session(engine)
 
-    """Return a list of all columns from the DEF table in the database""" 
+#     """Return a list of all columns from the DEF table in the database""" 
     def_query_results = session.query(DEF.Name, DEF.Team, DEF.Position, DEF.AverageDraftPosition, DEF.AverageDraftPositionPPR,DEF.ByeWeek, DEF.LastSeasonFantasyPoints,DEF.ProjectedFantasyPoints).all()
 
-    session.close()  
+#     session.close()  
     
     DEF_Data_values = []
     for name, team, position,averagedraftposition,averagedraftpositionppr, byeweek, lastseasonfantasypoints, projectedfantasypoints in def_query_results:

@@ -48,7 +48,7 @@ a {
 }
 a:active,
 a:hover {
-  outline: 0;
+  outline: 1;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -4599,18 +4599,18 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: #2e7c5e;
 }
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:hover {
-  color: #5e5e5e;
+  color: #2e7c5e;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #777;
+  color: #2e7c5e;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: white;
 }
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
@@ -4620,7 +4620,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-  color: #555;
+  color: #2e7c5e;
   background-color: #e7e7e7;
 }
 .navbar-default .navbar-nav > .disabled > a,
@@ -4637,7 +4637,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: #ddd;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #2e7c5e;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -4646,12 +4646,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
-  color: #555;
+  color: #2e7c5e;
   background-color: #e7e7e7;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #777;
+    color: #2e7c5e;
+    font-weight: bold;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
@@ -4695,7 +4696,7 @@ fieldset[disabled] .navbar-default .btn-link:hover {
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: #2e7c5e;
 }
 .navbar-inverse .navbar-brand:focus,
 .navbar-inverse .navbar-brand:hover {

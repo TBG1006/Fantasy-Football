@@ -32,9 +32,11 @@ html {
   
   /* ----NAV START---- */
   .navbar-custom {
-    background-color: #fff;
+    background-color: #2e7c5e;
   }
-  
+  .navbar-unique {
+    background-color: #2e7c5e!important;
+  }
   #logo {
     /* Box-model */
     height: 60px;
@@ -72,13 +74,14 @@ html {
   
   /* Nav element hover state */
   .navbar-default .navbar-nav > li > a:hover {
-    color: #2e7c5e;
+    color: black;
+    font-weight: bold;
   }
   
   /* Media query for nav */
   @media only screen and (max-width: 767px) {
     .navbar-header {
-      background-color: #4aaaa5;
+      background-color: #2e7c5e;
     }
   
     #logo {
@@ -135,7 +138,7 @@ html {
     /* Typography */
     font-size: 16px;
     line-height: 30px;
-    color: slategray;
+    color: #2e7c5e;
   }
   
   .description-text {
@@ -207,7 +210,7 @@ html {
   
   .imageNav-photo.active {
     /* Visuals */
-    border: 2px solid 2e7c5e;
+    border: 2px solid #2e7c5e;
   }
   
   #images {
@@ -231,7 +234,7 @@ html {
     font-family: Georgia, Times, "Times New Roman", serif;
   
     /* Typography */
-    font-size: 20px;
+    font-size: 50px;
     font-weight: bold;
     color: #2e7c5e;
     text-align: center;

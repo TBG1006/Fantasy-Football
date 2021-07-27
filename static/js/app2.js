@@ -273,25 +273,28 @@ function bubbleChart (data) {
     var ADP = [];
     var Position =[];
     var Player =[];
+    var ProjPts =[];
 
     for (var i = 0; i < data.length; i++){
         ADP.push(data[i].AverageDraftPosition);
         Position.push(data[i].Position);
         Player.push(data[i].Name);
+        ProjPts.push(data[i].ProjectedFantasyPoints);
     }
 
     var bubblelayout = {
-        title: "Player Average Draft Positions",
+        title: "Player Average Draft Positions vs. Projected Fantasy Points",
         hovermode: "closest",
         xaxis: {title: "Average Draft Position" },
+        yaxis: {title: "Projected Fantasy Points" },
         height: 600,
         width: 600
     };
 
     var bubbledata = [
         {
-            x: Position,
-            y: ADP,
+            x: ADP,
+            y: ProjPts,
             text: Player,
             mode: "markers",
             marker: {

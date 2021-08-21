@@ -14,4 +14,6 @@ We then took that data and visualized it in order to confirm or deny some of the
 
 This project utilized [DataTables](https://datatables.net/ "DataTables") to aid in the interactivity of the tables being created off of our API data. DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table.
 
+Please follow this link to our website: [2021 Fantasy Football Drafting](https://fantasyfootballstats.herokuapp.com/ "2021 Fantasy Football Drafting")
+
 Good luck in your upcoming 2021 Fantasy Leagues! Hope we helped you make informed decisions!

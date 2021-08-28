@@ -57,6 +57,10 @@ def about():
 @app.route("/index.html")
 def home(): 
     return render_template("index.html") 
+    
+@app.route("/predictions.html")
+def predictions(): 
+    return render_template("predictions.html")
 
 @app.route("/api/v1.0/Highlights")
 def highlights_data():

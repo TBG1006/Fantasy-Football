@@ -39,9 +39,9 @@ html {
   }
   #logo {
     /* Box-model */
-    height: 60px;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    height: 70px;
+    /* padding-top: 20px;
+    padding-bottom: 10px; */
   
     /* Positioning */
     margin-left: 70px;
@@ -60,6 +60,10 @@ html {
   #logo:hover {
     /* Visual */
     opacity: 0.7;
+    text-shadow: -1px 1px 2px #000,
+        1px 1px 2px #000,
+        1px -1px 0 #000,
+        -1px -1px 0 #000;
   }
   
   .navbar-right-custom {
@@ -74,8 +78,12 @@ html {
   
   /* Nav element hover state */
   .navbar-default .navbar-nav > li > a:hover {
-    color: black;
+    color: rgb(112, 109, 109);
     font-weight: bold;
+    text-shadow: -1px 1px 2px #000,
+				  1px 1px 2px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
   }
   
   /* Media query for nav */
@@ -176,13 +184,13 @@ html {
     width: 100%;
   
     /* Box-model */
-    padding: 30px 30px 43px;
+    padding: 15px 15px 20px;
   
     /* Positioning */
     margin-top: 32px;
   
     /* Visual */
-    background-color: #fff;
+    background-color: rgb(231, 231, 235);
   }
   
   .imageNav-header {
@@ -191,7 +199,7 @@ html {
     font-family: Georgia, Times, "Times New Roman", serif;
   
     /* Typography */
-    font-size: 25px;
+    font-size: 40px;
     font-weight: bold;
     color: #23283f;
   }
@@ -276,3 +284,4 @@ html {
   
   /* ----FOOTER END---- */
   
+ 

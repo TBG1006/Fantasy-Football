@@ -69,9 +69,13 @@
                     we began to question the data available, and so we reached out the site with a question or two. At which point, we can to discover that the free subscription
                     scrambles some of the data, and so that may have contributed to our lack of success.
                     <a href="https://sportsdata.io/developers/api-documentation/nfl#/fantasy-data/fantasy-feeds">Fantasy Data API</a> --></p>
-                  <p style="font-size: 130%">To what degree (if any) does Strength of Schedule influence indiviual player performance?</p>
-                  <p style="font-size: 130%">Use known data from 2020 about projected points vs actual points scored. Bump that up against SOS data, and create a model to more accuratley predict 2021 fantasy points.
-                    <a href="https://sportsdata.io/developers/api-documentation/nfl#/fantasy-data/fantasy-feeds" target="_blank">Data Source</a> </p>
+                  <p style="font-size: 130%">What we were hoping to find and drill into was that historically a higher Opponent Position Rank(OPR) results in more fantasy points scored
+                    <a href="https://sportsdata.io/developers/api-documentation/nfl#/fantasy-data/fantasy-feeds" target="_blank">Data Source</a>
+ 
+                  </p>
+                  <!-- <p style="font-size: 130%">Use known data from 2020 about projected points vs actual points scored. Bump that up against SOS data, and create a model to more accuratley predict 2021 fantasy points.
+                    <a href="https://sportsdata.io/developers/api-documentation/nfl#/fantasy-data/fantasy-feeds" target="_blank">Data Source</a> 
+                  </p> -->
                 </div>
               </section>
             </div>
@@ -85,6 +89,48 @@
                   <!-- <p>Explanation of first data points we compared -->
                   </p>
                   <img src="../static/images/SOS EXPLAIN.png" alt="ActVsOpp" class="center">
+                  
+                </div>
+              </section>
+            </div>
+          </section>
+          <section class="row">
+            <div class="col-md-1">
+              <section id="imageNav-area">
+                <div class="imageNav-content">
+                  <h2 style="font-size: 250%" class="imageNav-header">SOS EXAMPLE</h2>
+                  <hr style="height:2px;border-width:0;color:gray;background-color:gray"/>
+                  <table class="table table-hover", border="1">
+                    <thead>
+                      <tr> 
+                        <th scope="col">POS</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">OPP POS RANK</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">RB</th>
+                        <td style="text-align:center">Christian McCaffrey</td>
+                        <td style="text-align:center">1</td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="row">RB</th>
+                        <td>Gus Edwards</td>
+                        <td style="text-align:center">32</td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="row">RB</th>
+                        <td>D'Andre Swift</td>
+                        <td style="text-align:center">1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                
                 </div>
               </section>
             </div>

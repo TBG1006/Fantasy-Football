@@ -1,5 +1,7 @@
 # 2021 Fantasy Football Draft Tool #
 
+### [Click to view page](https://fantasyfootballstats.herokuapp.com/index.html)
+
 ![screenshot.png](ff_screenshot.PNG)
 
 As the 2021 NFL season approaches, plenty of people are preparing for their Fantasy Football leagues. Everyone wants to be a winner. If only it were that easy to know who exactly you should add to your team.

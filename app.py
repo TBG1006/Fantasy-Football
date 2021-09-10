@@ -26,6 +26,7 @@ Base.prepare(engine, reflect=True)
 
 # Save references to the measurement and station tables in the database
 # print(Base.metadata.tables.keys())
+print(Base.metadata.tables.keys())
 ADP = Base.metadata.tables['ADP_Data']
 # print(ADP)
 DEF = Base.metadata.tables['DEF_Data']
@@ -141,7 +142,7 @@ def projected_data():
     
     # Create new variable to store results from query to Measurement table for prcp and date columns
     projected_query_results = session.query(BoxPlot.c.NAME,BoxPlot.c.POSITION,BoxPlot.c.PROJECTED_POINTS).all()
-
+    print(position_query_results)
     # Close session
     session.close()
 

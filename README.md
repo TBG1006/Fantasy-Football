@@ -4,6 +4,10 @@
 
 ![screenshot.png](ff_screenshot.PNG)
 
+![stat_graph.png](stat_graph.PNG)
+
+![box_plot](box_plot.PNG)
+
 As the 2021 NFL season approaches, plenty of people are preparing for their Fantasy Football leagues. Everyone wants to be a winner. If only it were that easy to know who exactly you should add to your team.
 
 A huge part of being successful in your league, is picking the right players and you need to have as much information about the players and their stats to make the most informed decision.
